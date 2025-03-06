@@ -1,0 +1,30 @@
+:root {
+  --scheduled: #eb6402;
+  --ongoing: #43ad28;
+  --finished: #eb0237;
+  --button-hover: #a01131;
+  --button-disabled: #701328;
+}
+
+body {
+  margin: 0;
+  color: #ffffff;
+  font-weight: 600;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0;
+  background-color: #06080c;
+}

@@ -1,0 +1,33 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 55px 42px;
+}
+
+.section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.panel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+}
+
+.panel__error {
+  display: none;
+}
+
+.panel__error_active {
+  display: block;
+}
+
+.error_text {
+  font-weight: 500;
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+}

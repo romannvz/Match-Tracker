@@ -1,0 +1,14 @@
+.error_page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: normal;
+  font-size: 21px;
+  font-family: 'Inter', sans-serif;
+}
+
+.error_text {
+  font-weight: bold;
+  font-style: italic;
+}
