@@ -29,9 +29,9 @@
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\" --ignore-path ./.prettierignore",
     "check": "npm run stylelint:fix && npm run lint && npm run format",
     "commit": "npm run check && cz",
-    "prepare": "husky",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "test": ""
   },
   "eslintConfig": {
     "extends": [

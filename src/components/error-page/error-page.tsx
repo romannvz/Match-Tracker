@@ -10,10 +10,8 @@ export const ErrorPage: FC = () => {
   return (
     <>
       <main className={clsx(styles.error_page)}>
-        <p>
-          При загрузке данных сервер вернул ошибку:
-          <span className={clsx(styles.error_text)}>{errorText}.</span>
-        </p>
+        <p>При загрузке данных сервер вернул ошибку:</p>
+        <span className={clsx(styles.error_text)}>{errorText}.</span>
         <p>
           Рекомендуем повторить попытку позднее. Приносим извинения за
           неудобства.

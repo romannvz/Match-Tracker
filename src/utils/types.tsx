@@ -1,4 +1,4 @@
-export type TResponce = {
+export type TResponceMatches = {
   data: TMatch[];
   ok: boolean;
 };
