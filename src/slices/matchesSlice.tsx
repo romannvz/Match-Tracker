@@ -1,9 +1,9 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getApi } from '../utils/api';
-import { TResponce, TMatch } from '../utils/types';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { fetchMatchesAPI, retryMechanics } from '../components/shared/api/api';
+import { TResponceMatches, TMatch } from '../utils/types';
 
 interface matchesState {
-  res: TResponce | null | undefined;
+  res: TResponceMatches | null | undefined;
   isOk: boolean;
   matches: TMatch[];
   isLoading: boolean;
@@ -22,7 +22,18 @@ const initialState: matchesState = {
 
 export const getMatches = createAsyncThunk(
   'getMatches',
-  async () => await getApi()
+  async (_, { rejectWithValue }) => {
+    try {
+      return await fetchMatchesAPI();
+    } catch (err) {
+      console.log(
+        `Error in first fetch '${getMatches.typePrefix}'. Trying again..`
+      );
+      const res = await retryMechanics(fetchMatchesAPI, 3, 2); //call fetchMatchesAPI() for 3 times with delayed 10s between calls
+      if (typeof res == 'string') return rejectWithValue(res);
+      return res;
+    }
+  }
 );
 
 const matchesSlice = createSlice({
@@ -49,6 +60,9 @@ const matchesSlice = createSlice({
         state.isLoading = false;
         state.isOk = false;
         state.isError = true;
+        if (action.payload)
+          if (typeof action.payload === 'string')
+            action.error.message = String(action.payload);
         state.error = action.error.message;
       })
       .addCase(getMatches.fulfilled, (state, action) => {
